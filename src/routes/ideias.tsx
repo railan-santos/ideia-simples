@@ -37,6 +37,7 @@ function PaginaIdeias() {
   const [pronto, setPronto] = useState(false);
   const [formulario, setFormulario] = useState(formularioVazio);
   const [idEmEdicao, setIdEmEdicao] = useState<string | null>(null);
+  const [busca, setBusca] = useState("");
 
   // Carrega as ideias salvas ao abrir a página
   useEffect(() => {
@@ -52,6 +53,17 @@ function PaginaIdeias() {
   const ideiasOrdenadas = useMemo(
     () => [...ideias].sort((a, b) => b.atualizadaEm - a.atualizadaEm),
     [ideias],
+  );
+
+  const ideiasExibidas = useMemo(
+    () =>
+      busca.trim() === ""
+        ? ideiasOrdenadas
+        : ideiasOrdenadas.filter((ideia) =>
+          ideia.titulo.toLowerCase().includes(busca.toLowerCase()) ||
+          ideia.categoria.toLowerCase().includes(busca.toLowerCase()),
+        ),
+    [ideiasOrdenadas, busca],
   );
 
   function limparFormulario() {
@@ -87,6 +99,7 @@ function PaginaIdeias() {
             : ideia,
         ),
       );
+
     } else {
       // Cadastra uma nova ideia
       setIdeias((anteriores) => [
@@ -287,18 +300,32 @@ function PaginaIdeias() {
           </div>
         </form>
 
+
         <section className="mt-10">
+          {/* Campo de busca — NOVO */}
+          <input
+            type="search"
+            placeholder="Buscar por título ou categoria…"
+            value={busca}
+            onChange={(e) => setBusca(e.target.value)}
+            className="mb-4 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none transition focus:border-ring focus:ring-2 focus:ring-ring/20"
+          />
           <h2 className="mb-4 text-sm font-medium uppercase tracking-wider text-muted-foreground">
             Minhas ideias
+            {busca !== "" && (
+              <p className="mb-3 text-xs text-muted-foreground">
+                {ideiasExibidas.length} ideias encontradas
+              </p>
+            )}
           </h2>
 
-          {ideiasOrdenadas.length === 0 ? (
+          {ideiasExibidas.length === 0 ? (
             <p className="rounded-2xl border border-dashed border-border px-5 py-12 text-center text-sm text-muted-foreground">
               Nenhuma ideia cadastrada ainda. Comece registrando a primeira acima.
             </p>
           ) : (
             <div className="grid gap-4 sm:grid-cols-2">
-              {ideiasOrdenadas.map((ideia) => (
+              {ideiasExibidas.map((ideia) => (
                 <article
                   key={ideia.id}
                   className="flex flex-col rounded-2xl border border-border bg-card p-5 shadow-sm"
@@ -315,6 +342,11 @@ function PaginaIdeias() {
                       {ideia.categoria}
                     </span>
                   )}
+
+                  {ideia.autor && (
+                    <p className="mt-1 text-xs text-muted-foreground">Autor: {ideia.autor}</p>
+                  )}
+
                   <h3 className="text-lg font-semibold leading-snug">{ideia.titulo}</h3>
                   {ideia.conteudo && (
                     <p className="mt-1.5 whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground">

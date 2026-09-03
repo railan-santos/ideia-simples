@@ -61,14 +61,31 @@ Este documento serve como a **memória contínua** da nossa mentoria de programa
 
 ---
 
-## 🎯 Próxima Lição (Lição 7):
+### Lição 7: Renderização Condicional no JSX ✅
+* **Operador `&&` no JSX:** "SE a condição existir, ENTÃO renderiza o elemento. Senão, não mostra nada."
+* **Valores falsos em JS:** `undefined`, `""` (string vazia) e `null` são todos considerados falsos — o `&&` ignora o elemento nesses casos.
+* **Prática:** Adicionamos `{ideia.autor && <p>Autor: {ideia.autor}</p>}` nos cards da listagem.
+* **Percepção:** O mesmo padrão já existia para `imagem`, `categoria` e `conteudo` — renderização condicional está por todo o projeto.
 
-* **Exibir o Autor nos Cards:** Renderizar o nome do autor nos cartões das ideias salvas na listagem (por exemplo: `"Criado por: Fulano"` se existir autor cadastrado).
-* **Condicionais no JSX:** Aprender como exibir algo na tela apenas se a variável existir (`{ideia.autor && <span>...</span>}`).
-* **Filtros e Buscas:** Começar a criar uma barra de pesquisa para filtrar ideias por categoria, tag ou autor.
+---
+
+## 📍 Onde Paramos (Ponto Exato para Continuar)
+
+1. Criamos o campo `autor?: string` na interface `Ideia` em `src/lib/ideias.ts`.
+2. Adicionamos o campo `autor` no formulário de cadastro em `src/routes/ideias.tsx`.
+3. Exibimos o autor nos cards com renderização condicional (`&&`).
+4. Fizemos o primeiro commit e push oficial para o GitHub: `https://github.com/railan-santos/ideia-simples`.
+
+---
+
+## 🎯 Próxima Lição (Lição 8):
+
+* **Barra de Busca / Filtro:** Criar um `<input>` de pesquisa e um estado `busca` para filtrar as ideias exibidas por título, categoria ou tag.
+* **`useMemo` e `.filter()`:** Aprender a derivar uma lista filtrada a partir do estado original sem modificá-lo.
+* **Conceito:** A diferença entre o estado "fonte da verdade" (`ideias`) e uma lista derivada para exibição (`ideiasExibidas`).
 
 ---
 
 ## 💬 Mensagem para colar no chat da IDE no seu PC:
 
-> *"Olá! Estou continuando meus estudos do projeto Ideias Simples neste PC. Leia o arquivo `MENTORIA.md` para ver todo o nosso histórico de aprendizado, nossas regras de mentoria (um passo por vez, em português, sem código mágico) e vamos continuar exatamente a partir da **Lição 7**!"*
+> *"Olá! Estou continuando meus estudos do projeto Ideias Simples neste PC. Leia o arquivo `MENTORIA.md` para ver todo o nosso histórico de aprendizado, nossas regras de mentoria (um passo por vez, em português, sem código mágico) e vamos continuar exatamente a partir da **Lição 8**!"*

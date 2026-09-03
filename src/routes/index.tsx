@@ -74,32 +74,10 @@ function PaginaInicial() {
             </div>
           </div>
         </section>
-
-        {/* CTA final */}
-        <section className="border-t border-border">
-          <div className="mx-auto max-w-5xl px-5 py-16 text-center">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-              Pronto para registrar a primeira ideia?
-            </h2>
-            <p className="mx-auto mt-3 max-w-md leading-relaxed text-muted-foreground">
-              Não precisa de conta. Abra o caderno, escreva com suas palavras e
-              guarde o que aprendeu.
-            </p>
-            <Link
-              to="/ideias"
-              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              Abrir o caderno
-              <svg viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
-          </div>
-        </section>
       </main>
 
       <footer className="border-t border-border">
-        <div className="mx-auto max-w-5xl px-5 py-8 text-center">
+        <div className="mx-auto max-w5xl px-5 py-8 text-center">
           <p className="font-mono text-xs text-muted-foreground">
             Ideias Simples — um caderno pessoal de estudos
           </p>
